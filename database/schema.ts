@@ -7,32 +7,71 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
-export class CommentSchema extends BaseModel {
-  static $columns = ['createdAt', 'id', 'updatedAt'] as const
-  $columns = CommentSchema.$columns
+export class ProfileSchema extends BaseModel {
+  static $columns = ['about', 'createdAt', 'email', 'github', 'id', 'linkedin', 'location', 'name', 'profileImage', 'resume', 'title', 'updatedAt'] as const
+  $columns = ProfileSchema.$columns
+  @column()
+  declare about: string | null
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
+  @column()
+  declare email: string | null
+  @column()
+  declare github: string | null
   @column({ isPrimary: true })
   declare id: number
+  @column()
+  declare linkedin: string | null
+  @column()
+  declare location: string | null
+  @column()
+  declare name: string | null
+  @column()
+  declare profileImage: string | null
+  @column()
+  declare resume: string | null
+  @column()
+  declare title: string | null
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
 }
 
-export class PostSchema extends BaseModel {
-  static $columns = ['createdAt', 'id', 'summary', 'title', 'updatedAt', 'url'] as const
-  $columns = PostSchema.$columns
+export class ProjectSchema extends BaseModel {
+  static $columns = ['createdAt', 'description', 'githubUrl', 'id', 'image', 'liveUrl', 'technologies', 'title', 'updatedAt'] as const
+  $columns = ProjectSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column()
+  declare description: string | null
+  @column()
+  declare githubUrl: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare image: string | null
+  @column()
+  declare liveUrl: string | null
+  @column()
+  declare technologies: string | null
+  @column()
+  declare title: string | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class SkillSchema extends BaseModel {
+  static $columns = ['category', 'createdAt', 'id', 'name', 'updatedAt'] as const
+  $columns = SkillSchema.$columns
+  @column()
+  declare category: string | null
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
   @column({ isPrimary: true })
   declare id: number
   @column()
-  declare summary: string
-  @column()
-  declare title: string
+  declare name: string | null
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
-  @column()
-  declare url: string
 }
 
 export class UserSchema extends BaseModel {

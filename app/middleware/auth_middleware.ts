@@ -3,7 +3,9 @@ import type { NextFn } from '@adonisjs/core/types/http'
 import type { Authenticators } from '@adonisjs/auth/types'
 
 export default class AuthMiddleware {
-  redirectTo = '/login'
+  // Login is currently disabled, so send unauthenticated visitors home
+  // instead of to the (now non-existent) /login page.
+  redirectTo = '/'
 
   async handle(
     ctx: HttpContext,

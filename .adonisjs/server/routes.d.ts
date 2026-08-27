@@ -5,26 +5,33 @@ type ParamValue = string | number | bigint | boolean
 export type ScannedRoutes = {
   ALL: {
     'home': { paramsTuple?: []; params?: {} }
-    'new_account.create': { paramsTuple?: []; params?: {} }
-    'new_account.store': { paramsTuple?: []; params?: {} }
-    'session.create': { paramsTuple?: []; params?: {} }
-    'session.store': { paramsTuple?: []; params?: {} }
-    'session.destroy': { paramsTuple?: []; params?: {} }
+    'admin.dashboard': { paramsTuple?: []; params?: {} }
+    'admin.profile.update': { paramsTuple?: []; params?: {} }
+    'admin.projects.store': { paramsTuple?: []; params?: {} }
+    'admin.projects.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'admin.projects.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'admin.skills.store': { paramsTuple?: []; params?: {} }
+    'admin.skills.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   GET: {
     'home': { paramsTuple?: []; params?: {} }
-    'new_account.create': { paramsTuple?: []; params?: {} }
-    'session.create': { paramsTuple?: []; params?: {} }
+    'admin.dashboard': { paramsTuple?: []; params?: {} }
   }
   HEAD: {
     'home': { paramsTuple?: []; params?: {} }
-    'new_account.create': { paramsTuple?: []; params?: {} }
-    'session.create': { paramsTuple?: []; params?: {} }
+    'admin.dashboard': { paramsTuple?: []; params?: {} }
+  }
+  PUT: {
+    'admin.profile.update': { paramsTuple?: []; params?: {} }
+    'admin.projects.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   POST: {
-    'new_account.store': { paramsTuple?: []; params?: {} }
-    'session.store': { paramsTuple?: []; params?: {} }
-    'session.destroy': { paramsTuple?: []; params?: {} }
+    'admin.projects.store': { paramsTuple?: []; params?: {} }
+    'admin.skills.store': { paramsTuple?: []; params?: {} }
+  }
+  DELETE: {
+    'admin.projects.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'admin.skills.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
 }
 declare module '@adonisjs/core/types/http' {

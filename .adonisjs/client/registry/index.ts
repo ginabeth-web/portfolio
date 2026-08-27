@@ -12,35 +12,47 @@ const routes = {
     tokens: [{"old":"/","type":0,"val":"/","end":""}],
     types: placeholder as Registry['home']['types'],
   },
-  'new_account.create': {
+  'admin.dashboard': {
     methods: ["GET","HEAD"],
-    pattern: '/signup',
-    tokens: [{"old":"/signup","type":0,"val":"signup","end":""}],
-    types: placeholder as Registry['new_account.create']['types'],
+    pattern: '/admin',
+    tokens: [{"old":"/admin","type":0,"val":"admin","end":""}],
+    types: placeholder as Registry['admin.dashboard']['types'],
   },
-  'new_account.store': {
+  'admin.profile.update': {
+    methods: ["PUT"],
+    pattern: '/admin/profile',
+    tokens: [{"old":"/admin/profile","type":0,"val":"admin","end":""},{"old":"/admin/profile","type":0,"val":"profile","end":""}],
+    types: placeholder as Registry['admin.profile.update']['types'],
+  },
+  'admin.projects.store': {
     methods: ["POST"],
-    pattern: '/signup',
-    tokens: [{"old":"/signup","type":0,"val":"signup","end":""}],
-    types: placeholder as Registry['new_account.store']['types'],
+    pattern: '/admin/projects',
+    tokens: [{"old":"/admin/projects","type":0,"val":"admin","end":""},{"old":"/admin/projects","type":0,"val":"projects","end":""}],
+    types: placeholder as Registry['admin.projects.store']['types'],
   },
-  'session.create': {
-    methods: ["GET","HEAD"],
-    pattern: '/login',
-    tokens: [{"old":"/login","type":0,"val":"login","end":""}],
-    types: placeholder as Registry['session.create']['types'],
+  'admin.projects.update': {
+    methods: ["PUT"],
+    pattern: '/admin/projects/:id',
+    tokens: [{"old":"/admin/projects/:id","type":0,"val":"admin","end":""},{"old":"/admin/projects/:id","type":0,"val":"projects","end":""},{"old":"/admin/projects/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['admin.projects.update']['types'],
   },
-  'session.store': {
+  'admin.projects.destroy': {
+    methods: ["DELETE"],
+    pattern: '/admin/projects/:id',
+    tokens: [{"old":"/admin/projects/:id","type":0,"val":"admin","end":""},{"old":"/admin/projects/:id","type":0,"val":"projects","end":""},{"old":"/admin/projects/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['admin.projects.destroy']['types'],
+  },
+  'admin.skills.store': {
     methods: ["POST"],
-    pattern: '/login',
-    tokens: [{"old":"/login","type":0,"val":"login","end":""}],
-    types: placeholder as Registry['session.store']['types'],
+    pattern: '/admin/skills',
+    tokens: [{"old":"/admin/skills","type":0,"val":"admin","end":""},{"old":"/admin/skills","type":0,"val":"skills","end":""}],
+    types: placeholder as Registry['admin.skills.store']['types'],
   },
-  'session.destroy': {
-    methods: ["POST"],
-    pattern: '/logout',
-    tokens: [{"old":"/logout","type":0,"val":"logout","end":""}],
-    types: placeholder as Registry['session.destroy']['types'],
+  'admin.skills.destroy': {
+    methods: ["DELETE"],
+    pattern: '/admin/skills/:id',
+    tokens: [{"old":"/admin/skills/:id","type":0,"val":"admin","end":""},{"old":"/admin/skills/:id","type":0,"val":"skills","end":""},{"old":"/admin/skills/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['admin.skills.destroy']['types'],
   },
 } as const satisfies Record<string, AdonisEndpoint>
 
